@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>Home</string>
+		<key>segueIdentifier</key>
+		<string>HomeViewCotrollerSegueIdentifier</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>My Profile</string>
+		<key>segueIdentifier</key>
+		<string>MyProfileViewControllerSegueIdentifier</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Raise a Request</string>
+		<key>segueIdentifier</key>
+		<string>RaiseRequestSequeIdetifier</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Order List</string>
+		<key>segueIdentifier</key>
+		<string>OrderListViewControllerSegueidentifer</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Repaired Orders</string>
+		<key>segueIdentifier</key>
+		<string>FTSOSSegueIdentifier</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Settings</string>
+		<key>segueIdentifier</key>
+		<string>SettingViewCotrollerSegueIdentifier</string>
+	</dict>
+</array>
+</plist>

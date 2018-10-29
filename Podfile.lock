@@ -1,0 +1,42 @@
+PODS:
+  - ABSignatureView (0.1.1)
+  - ECSlidingViewController (2.0.3)
+  - RSFloatInputView (1.0.0)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
+  - SVProgressHUD (2.2.5)
+  - TWMessageBarManager (1.8.1)
+  - "UITextView+Placeholder (1.2.0)"
+
+DEPENDENCIES:
+  - ABSignatureView
+  - ECSlidingViewController
+  - RSFloatInputView
+  - SDWebImage
+  - SVProgressHUD
+  - TWMessageBarManager
+  - "UITextView+Placeholder"
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ABSignatureView
+    - ECSlidingViewController
+    - RSFloatInputView
+    - SDWebImage
+    - SVProgressHUD
+    - TWMessageBarManager
+    - "UITextView+Placeholder"
+
+SPEC CHECKSUMS:
+  ABSignatureView: a7d83543499a65204211c670d9314d98161e9eff
+  ECSlidingViewController: 6485c14f23b4487e9946535421ca8f111f86cc53
+  RSFloatInputView: fea19c7b6c1228047379ee38ca9bca9e9d5a0fd6
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  TWMessageBarManager: fd84e7948ba7968a2b5d9454859135761214ec56
+  "UITextView+Placeholder": 77680995fcdd07c3f52ec92fe1150874a2ac89ff
+
+PODFILE CHECKSUM: 1a7fde0cbf3f0fe5309c133f572adae6c2007b14
+
+COCOAPODS: 1.5.3
