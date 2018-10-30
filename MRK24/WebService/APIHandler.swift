@@ -286,7 +286,8 @@ class APIHandler: NSObject {
             arrayDict.append(dict)
         }
         
-        let dict = ["product_name":Pname,
+        let dict = ["user_id":order.user!.id ?? "",
+                    "product_name":Pname.uppercased(),
                     "description":descp,
                     "images":arrayDict,
                     "signature_image_name": signaturName,

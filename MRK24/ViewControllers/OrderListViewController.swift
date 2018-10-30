@@ -71,7 +71,10 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
     @objc func btnViewPhoto(sender:UIButton)  {
         if let controller = storyboard?.instantiateViewController(withIdentifier: "AddPhotoViewController") as? AddPhotoViewController
             {
-                 let order  = orderArray[sender.tag]
+                let order  = orderArray[sender.tag]
+                if order.imagesArray.isEmpty{
+                    return
+                }
                 controller.imageStrArr = order.imagesArray
                 navigationController?.pushViewController(controller, animated: true)
         }
@@ -92,10 +95,12 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
         if !(searchBar.text?.isEmpty)! {
-            //            self.actorArray.sort(by: { ($0.name!, $0.country!) < ($1.name!,$1.country!)})
-
+            // self.actorArray.sort(by: { ($0.name!, $0.country!) < ($1.name!,$1.country!)})
+            //product_name filter
             self.orderArray = originalOrderArray.filter({($0.orderID?.uppercased().contains(searchBar.text!))!})
-            
+           // self.orderArray.sort(by: { ($0.orderID!, $0.product!) < ($1.orderID!,$1.product!)})
+           // self.actorArray = originalactorArray.filter({($0.name?.uppercased().contains(searchBar.text!))!})
+
             tblView.reloadData()
         } else {
             tblView.reloadData()
@@ -110,9 +115,11 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
         if searchText.isEmpty {
             orderArray = originalOrderArray
             tblView.reloadData()
-            
+        }else{
+            searchBar.text = searchText.uppercased()
+            let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+            textFieldInsideSearchBar?.textColor = UIColor.white
         }
-        searchBar.text = searchText.uppercased()
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar)
