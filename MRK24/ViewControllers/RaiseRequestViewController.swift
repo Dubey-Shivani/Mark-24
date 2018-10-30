@@ -80,7 +80,7 @@ class RaiseRequestViewController: MRKBaseViewController, AddPhotoDelegate {
         
         print(viewSignature.signatureImage())
         if let product = lbltext.text, let issue = descriptionTextView.text   {
-            if product.isEmpty || issue.isEmpty || imageArr.count > 0 || viewSignature.hasSigned() == false{
+            if product.isEmpty || issue.isEmpty || imageArr.count == 0 || viewSignature.hasSigned() == false{
                 print("Please fill information")
                 isSendable = false
                 return
