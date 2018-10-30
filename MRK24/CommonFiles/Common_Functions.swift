@@ -119,6 +119,16 @@ func dateToString(_ date:Foundation.Date) -> String {
     return dateString
 }
 
+func ChangeDateFormat(_ dateStr:String) -> String {
+    let formatter = Foundation.DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    let date = formatter.date(from: dateStr)
+    formatter.dateFormat = "yyyy-MM-dd"
+
+    let dateString = formatter.string(from: date ?? Foundation.Date())
+    return dateString
+}
+
 func alertWithMessage(title : String , message : String ,  vc : Any)  {
     
     let alert = UIAlertController(title: title,

@@ -171,7 +171,7 @@ class APIHandler: NSObject {
             strongSelf.currentUser.state = state
         }
         if let city = jsonResult["city"] as? String{
-            strongSelf.currentUser.state = city
+            strongSelf.currentUser.city = city
         }
         if let country = jsonResult["country"] as? String{
             strongSelf.currentUser.country = country
@@ -273,11 +273,10 @@ class APIHandler: NSObject {
         let signaturName = "\(order.user!.first_name ?? "TestFailed").png"
         let resizedImage = signature.jpeg(.low)
         let signaureImageContent = resizedImage!.base64EncodedString()
-        
         var arrayDict = [Dictionary<String, Any>]()
         for index in 0..<images.count {
             let image = images[index]
-            let imageName = "\(String(describing: order.user!.first_name!))\(String(index)).png"
+            let imageName = "\(String(describing: descp))\(String(index)).png"
             let resizedImage = image.jpeg(.low)
             let imageContent = resizedImage!.base64EncodedString()
             let dict = ["image_name":imageName,
@@ -338,7 +337,13 @@ class APIHandler: NSObject {
                 order.issue = description
             }
             if let created_date = dic["created_date"] as? String{
-                order.createdAt = created_date
+                order.createdAt = ChangeDateFormat(created_date)
+            }
+            if let signature = dic["signature"] as? String{
+                order.signatureUrl = signature
+            }
+            if let images = dic["images"] as? [String]{
+                order.imagesArray = images
             }
             if let product_name = dic["product_name"] as? String{
                 order.product = product_name

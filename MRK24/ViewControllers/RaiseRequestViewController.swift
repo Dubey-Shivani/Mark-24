@@ -36,17 +36,17 @@ class RaiseRequestViewController: MRKBaseViewController, AddPhotoDelegate {
         heightConstrant.constant = 0
         descriptionTextView.placeholder = "Describe the issue"
         descriptionTextView.placeholderColor = UIColor.white
-       // self.edgesForExtendedLayout = [UIRectEdge.top, UIRectEdge.bottom, UIRectEdge.left]
+        // self.edgesForExtendedLayout = [UIRectEdge.top, UIRectEdge.bottom, UIRectEdge.left]
         
         //shouldAllowPanningPastAnchor
         print(self.slidingViewController().anchorRightRevealAmount)
         self.slidingViewController().anchorRightRevealAmount = 0
         
         
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     @IBAction func btnDownUPAction(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected {
@@ -78,17 +78,16 @@ class RaiseRequestViewController: MRKBaseViewController, AddPhotoDelegate {
     
     @IBAction func saveBtnAction(_ sender: Any) {
         
-         print(viewSignature.signatureImage())
+        print(viewSignature.signatureImage())
         if let product = lbltext.text, let issue = descriptionTextView.text   {
             if product.isEmpty || issue.isEmpty || imageArr.count > 0 || viewSignature.hasSigned() == false{
                 print("Please fill information")
                 isSendable = false
                 return
             }
-           
+            
             orderInfo.product = product
             orderInfo.issue = issue
-            orderInfo.imagesArray = imageArr
             orderInfo.signature = viewSignature.signatureImage()
             let date = dateToString(Date())
             orderInfo.orderDate = date
@@ -116,7 +115,7 @@ class RaiseRequestViewController: MRKBaseViewController, AddPhotoDelegate {
             navigationController?.pushViewController(controller, animated: true)
         }
     }
-   
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let controller = segue.destination as? DropTableViewController {
@@ -125,7 +124,7 @@ class RaiseRequestViewController: MRKBaseViewController, AddPhotoDelegate {
             controller.completionBlock = { [weak self] (data: String) in
                 DispatchQueue.main.async {
                     self?.lbltext.text = data
-                   // self.orderInfo?.product = data
+                    // self.orderInfo?.product = data
                 }
                 UIView.animate(withDuration: 0.7) {
                     self?.heightConstrant.constant = 0
@@ -152,18 +151,18 @@ class RaiseRequestViewController: MRKBaseViewController, AddPhotoDelegate {
     
     func apiRaiserRequest() {
         SVProgressHUD.show()
-        APIHandler.sharedInstance.raiserRequest(ProductName: orderInfo.product!, withDescrption: orderInfo.issue!, images: orderInfo.imagesArray, signature: orderInfo.signature!, order:orderInfo) { (successInfo, errorInfo) in
+        APIHandler.sharedInstance.raiserRequest(ProductName: orderInfo.product!, withDescrption: orderInfo.issue!, images: imageArr, signature: orderInfo.signature!, order:orderInfo) { (successInfo, errorInfo) in
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
             }
             
             if errorInfo == nil {
-               
+                
                 let alertController = AlertController(title: "SUCCESS", message: successInfo!)
                 alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 alertController.tapNoSignupBlock = {
-                  
+                    
                 }
                 self.present(alertController, animated: false, completion: nil)
                 DispatchQueue.main.async {
@@ -174,7 +173,7 @@ class RaiseRequestViewController: MRKBaseViewController, AddPhotoDelegate {
                 TWMessageBarManager.sharedInstance().showMessage(withTitle: "Error", description: errorInfo, type: .error)
             }
         }
-       
+        
     }
     
     func clear() {
@@ -189,13 +188,13 @@ class RaiseRequestViewController: MRKBaseViewController, AddPhotoDelegate {
         
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

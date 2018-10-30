@@ -492,9 +492,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Checkbox" width="16" height="16"/>
-        <image name="UncheckBox" width="64" height="64"/>
-        <image name="background1" width="360" height="540"/>
+        <image name="Checkbox" width="16.5" height="16.5"/>
+        <image name="UncheckBox" width="20.803611755371094" height="20.803611755371094"/>
+        <image name="background1" width="720" height="1080"/>
         <image name="logotextwithconnecting" width="232" height="121"/>
     </resources>
 </document>

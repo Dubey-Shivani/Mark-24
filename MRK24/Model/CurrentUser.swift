@@ -38,14 +38,14 @@ class CurrentUser: NSObject, NSCoding {
     
         self.id = aDecoder.decodeObject(forKey: "id") as? String
         self.username = aDecoder.decodeObject(forKey: "username") as? String
-        self.first_name = aDecoder.decodeObject(forKey: "first_name") as? String
-        self.last_name = aDecoder.decodeObject(forKey: "last_name") as? String
-        self.email_id = aDecoder.decodeObject(forKey: "email_id") as? String
+        self.first_name = aDecoder.decodeObject(forKey: "firstname") as? String
+        self.last_name = aDecoder.decodeObject(forKey: "lastname") as? String
+        self.email_id = aDecoder.decodeObject(forKey: "email") as? String
         self.address = aDecoder.decodeObject(forKey: "address") as? String
         self.city = aDecoder.decodeObject(forKey: "city") as? String
         self.state = aDecoder.decodeObject(forKey: "state") as? String
         self.country = aDecoder.decodeObject(forKey: "country") as? String
-        self.phone_number = aDecoder.decodeObject(forKey: "phone_number") as? String
+        self.phone_number = aDecoder.decodeObject(forKey: "phonenumber") as? String
         self.password = aDecoder.decodeObject(forKey: "password") as? String
         self.devicetoken = aDecoder.decodeObject(forKey: "devicetoken") as? String
         
@@ -58,13 +58,13 @@ class CurrentUser: NSObject, NSCoding {
             anEncoder.encode(username, forKey: "username")
         }
         if let first_name = first_name {
-            anEncoder.encode(first_name, forKey: "first_name")
+            anEncoder.encode(first_name, forKey: "firstname")
         }
         if let last_name = last_name {
-            anEncoder.encode(last_name, forKey: "last_name")
+            anEncoder.encode(last_name, forKey: "lastname")
         }
         if let email_id = email_id {
-            anEncoder.encode(email_id, forKey: "email_id")
+            anEncoder.encode(email_id, forKey: "email")
         }
         if let address = address {
             anEncoder.encode(address, forKey: "address")
@@ -76,10 +76,10 @@ class CurrentUser: NSObject, NSCoding {
             anEncoder.encode(state, forKey: "state")
         }
         if let country = country {
-            anEncoder.encode(country, forKey: "username")
+            anEncoder.encode(country, forKey: "country")
         }
         if let phone_number = phone_number {
-            anEncoder.encode(phone_number, forKey: "phone_number")
+            anEncoder.encode(phone_number, forKey: "phonenumber")
         }
         if let password = password {
             anEncoder.encode(password, forKey: "password")

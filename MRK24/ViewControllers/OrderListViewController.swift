@@ -62,6 +62,7 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
         cell.lblOrderId.text = order.orderID
         cell.lblProduct.text = order.product
         cell.lblProblem.text = order.issue
+        cell.lblSubmitdate.text = order.createdAt
         cell.viewBtn.tag = indexPath.row
         cell.viewBtn.addTarget(self, action: #selector(btnViewPhoto), for: .touchUpInside)
         return cell
@@ -70,6 +71,8 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
     @objc func btnViewPhoto(sender:UIButton)  {
         if let controller = storyboard?.instantiateViewController(withIdentifier: "AddPhotoViewController") as? AddPhotoViewController
             {
+                 let order  = orderArray[sender.tag]
+                controller.imageStrArr = order.imagesArray
                 navigationController?.pushViewController(controller, animated: true)
         }
     }

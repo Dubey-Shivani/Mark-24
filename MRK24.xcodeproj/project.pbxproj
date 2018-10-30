@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7026FEC421875C4700F4A915 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7026FEC321875C4700F4A915 /* EditProfileViewController.swift */; };
 		7026FEC621876A6500F4A915 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7026FEC521876A6500F4A915 /* RoundedImageView.swift */; };
 		778D2385F777A4C2FB30B93C /* Pods_MRK24.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4200467D16D9885FDFFA3A5D /* Pods_MRK24.framework */; };
 		9E06AC9221792654008C6D39 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E06AC9121792654008C6D39 /* Setting.storyboard */; };
@@ -67,7 +66,6 @@
 		0AC78861844AC23E6EA73869 /* Pods-MRK24.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MRK24.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MRK24/Pods-MRK24.debug.xcconfig"; sourceTree = "<group>"; };
 		14FA66267740D494A832D521 /* Pods-MRK24.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MRK24.release.xcconfig"; path = "Pods/Target Support Files/Pods-MRK24/Pods-MRK24.release.xcconfig"; sourceTree = "<group>"; };
 		4200467D16D9885FDFFA3A5D /* Pods_MRK24.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MRK24.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7026FEC321875C4700F4A915 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		7026FEC521876A6500F4A915 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		9E06AC9121792654008C6D39 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		9E06AC9321792D47008C6D39 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
@@ -227,7 +225,6 @@
 		9E55B41621784E1700C6914B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7026FEC321875C4700F4A915 /* EditProfileViewController.swift */,
 				9E55B4322178EBCF00C6914B /* SideMenuViewController.swift */,
 				9E08E4342178FD4800B4C58F /* FTSideMenuTableViewCell.swift */,
 				9E08E4332178FD4800B4C58F /* FTBaseUserView.swift */,
@@ -456,7 +453,6 @@
 				9E08E43A2179033900B4C58F /* FTMenuItem.swift in Sources */,
 				9EA61B952183251B0063E342 /* MyProfileViewTableCell.swift in Sources */,
 				9E55B41421784E0B00C6914B /* RoundImage.swift in Sources */,
-				7026FEC421875C4700F4A915 /* EditProfileViewController.swift in Sources */,
 				9E55B40E21784E0B00C6914B /* Common_Functions.swift in Sources */,
 				9EF31771217A645600CCD2FE /* URLFactory.swift in Sources */,
 				9E55B41121784E0B00C6914B /* PJTextField.swift in Sources */,

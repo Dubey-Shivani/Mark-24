@@ -15,14 +15,13 @@ struct Order {
     var status : String?
     var orderDate : String?
     var signature : UIImage?
+    var signatureUrl : String?
     var createdAt :String?
     var title: String?
     var uid :String?
     var updatedDate :String?
-    var imagesArray : Array<UIImage> = []
+    var imagesArray : Array<String> = []
     var user : CurrentUser?
-    
-    
     
 }
 

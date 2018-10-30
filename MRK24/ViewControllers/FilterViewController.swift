@@ -70,7 +70,7 @@ class FilterViewController: UIViewController {
     
     func dateFromStr(dateStr:String) -> Date {
         let formtter = DateFormatter()
-        formtter.dateFormat = "dd/MM/yyyy"
+        formtter.dateFormat = "yyyy-MM-dd"
         let date = formtter.date(from: dateStr)
         return date!
     }
@@ -83,7 +83,7 @@ class FilterViewController: UIViewController {
     }
     @IBAction func datepickerAction(_ sender: Any) {
         let formtter = DateFormatter()
-        formtter.dateFormat = "dd/MM/yyyy"
+        formtter.dateFormat = "yyyy-MM-dd"
         let dateTime = datepicker.date
         dateStr = formtter.string(from: dateTime)
         
