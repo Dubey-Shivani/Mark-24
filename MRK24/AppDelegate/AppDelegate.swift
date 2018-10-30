@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CurrentUser.sharedInstance.first_name =  APIHandler.sharedInstance.currentUser.first_name
         CurrentUser.sharedInstance.last_name =  APIHandler.sharedInstance.currentUser.last_name
         CurrentUser.sharedInstance.username =  APIHandler.sharedInstance.currentUser.username
+        CurrentUser.sharedInstance.email_id = APIHandler.sharedInstance.currentUser.email_id
         CurrentUser.sharedInstance.phone_number =  APIHandler.sharedInstance.currentUser.phone_number
         CurrentUser.sharedInstance.address =  APIHandler.sharedInstance.currentUser.address
         CurrentUser.sharedInstance.city =  APIHandler.sharedInstance.currentUser.city
