@@ -8,7 +8,7 @@
 
 import UIKit
 protocol FilterDelegate: class{
-    func setPredicate(predicate: NSCompoundPredicate )
+    func setfilterOption(product:ProductType,orderS:OrderStatus)
 }
 class FilterViewController: UIViewController {
     var btnselected :Bool = false
@@ -26,10 +26,8 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var btnCompleted: UIButton!
     var dateStr :String?
     var isFromDate :Bool  = false
-    
-    var predicate1 = NSPredicate()
-    var predicate2 = NSPredicate()
-    var predicate3 = NSPredicate()
+    var productType = ProductType.None
+    var orderType = OrderStatus.None
 
     
     override func viewDidLoad() {
@@ -61,7 +59,7 @@ class FilterViewController: UIViewController {
             if !fromDate.isEmpty && !toDate.isEmpty{
 
                 if let dateFrom = dateFromStr(dateStr: fromDate) as? NSDate, let dateTo = dateFromStr(dateStr: toDate) as? NSDate{
-                    predicate3  = NSPredicate(format:"date >= %@ && date <= %@ ", dateFrom as CVarArg, dateTo as CVarArg)
+                   // predicate3  = NSPredicate(format:"date >= %@ && date <= %@ ", dateFrom as CVarArg, dateTo as CVarArg)
 
                 }
             }
@@ -108,58 +106,58 @@ class FilterViewController: UIViewController {
     
     @IBAction func btnSelectProductAction(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        var strValue : String?
         if sender.tag == 101 {
             btnDektop.isSelected = true
             btnLaptop.isSelected = false
             btnServer.isSelected = false
             btnMobile.isSelected = false
-           strValue = "Desktop"
+            productType = .Desktop
         }else if sender.tag == 102{
             btnDektop.isSelected = false
             btnLaptop.isSelected = true
             btnServer.isSelected = false
             btnMobile.isSelected = false
-            strValue = "Laptop"
+            productType = .Laptop
         }else if sender.tag == 103{
             btnDektop.isSelected = false
             btnLaptop.isSelected = false
             btnServer.isSelected = true
             btnMobile.isSelected = false
-            strValue = "Server"
+            productType = .Server
         }else {
             btnDektop.isSelected = false
             btnLaptop.isSelected = false
             btnServer.isSelected = false
             btnMobile.isSelected = true
-            strValue = "Mobile"
+            productType = .Mobile
         }
         
-        predicate1 = NSPredicate(format: ("Product CONTAINS[c] %@"), strValue!)
     }
     
     
     @IBAction func btnSelectStatus(_ sender: UIButton) {
-        var strValue : String?
         sender.isSelected = !sender.isSelected
         if sender.tag == 105 {
             btnInProgress.isSelected = true
             btnCompleted.isSelected = false
-            strValue = "In Process"
+            orderType = .InProgress
+            
         }else{
             btnInProgress.isSelected = false
             btnCompleted.isSelected = true
-            strValue = "Completed"
+            orderType = .Completed
         }
         
-        predicate2 = NSPredicate(format: ("Status CONTAINS[c] %@"), strValue!)
+       // predicate2 = NSPredicate(format: ("Status CONTAINS[c] %@"), strValue!)
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
         
-        let predicateCompound = NSCompoundPredicate.init(type: .and, subpredicates: [predicate1,predicate2, predicate3])
-        delegate?.setPredicate(predicate: predicateCompound)
+        //let predicateCompound = NSCompoundPredicate.init(type: .and, subpredicates: [predicate1,predicate2, predicate3])
+       // delegate?.setPredicate(predicate: predicateCompound)
 
+        delegate?.setfilterOption(product: productType, orderS: orderType)
+        navigationController?.popViewController(animated: true)
 
     }
     

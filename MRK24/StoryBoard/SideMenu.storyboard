@@ -426,7 +426,6 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="FilterIcon" id="yHo-pz-k0j">
                             <connections>
-                                <action selector="filterBtnAction:" destination="yke-Y5-v6y" id="7F0-wn-HNK"/>
                                 <segue destination="rfr-jQ-IaW" kind="show" id="vNF-Hk-FTj"/>
                             </connections>
                         </barButtonItem>

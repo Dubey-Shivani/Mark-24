@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CurrentUser.sharedInstance.city =  APIHandler.sharedInstance.currentUser.city
         CurrentUser.sharedInstance.state =  APIHandler.sharedInstance.currentUser.state
         CurrentUser.sharedInstance.country =  APIHandler.sharedInstance.currentUser.country
+        CurrentUser.sharedInstance.profileImage =  APIHandler.sharedInstance.currentUser.profileImage
         
     }
     

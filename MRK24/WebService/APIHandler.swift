@@ -70,11 +70,11 @@ class APIHandler: NSObject {
     
     func profileUpdateRequest(customer:Customer, profileImage: UIImage?, completion: @escaping (_ updateInfo: String?, _ error: String?) -> Void) {
         
-        let imageName = "\(String(describing: customer.first_name)).png"
-        let resizedImage = profileImage!.jpeg(.low)
+        let imageName = "\(String(describing: customer.id)).png"
+        let resizedImage = profileImage!.jpeg(.lowest)
         let imageContent = resizedImage!.base64EncodedString()
         let dic = ["id":customer.id,
-                   "username":customer.first_name,
+                   "username":customer.username,
                    "firstname":customer.first_name,
                    "lastname":customer.last_name,
                    "emailid":customer.email_id,
@@ -82,10 +82,9 @@ class APIHandler: NSObject {
                    "city":customer.city,
                    "state":customer.state,
                    "country":customer.country,
-                   "profile_image_name ":imageName,
-                   "profile_image_content ":imageContent
+                   "profile_image_name":imageName,
+                   "profile_image_content":imageContent
         ]
-        print(dic)
         urlFactory.webServiceCall(methodName: EditProfileApi, with: dic) { (data, response, error) in
             do{
                 if let jsonResult =  try JSONSerialization.jsonObject(with: data, options:[]) as? Dictionary<String, Any>{
@@ -96,9 +95,11 @@ class APIHandler: NSObject {
                         if Int(errorCode) != 200 {
                             completion(nil , info)
                         }else{
-                            let strongSelf = self
+                            //let strongSelf = self
                             let datajson = jsonResult["data"]
-                            self.initCustom(strongSelf: strongSelf, jsonResult: datajson as! [String : Any])
+                            //self.initCustom(strongSelf: strongSelf, jsonResult: datajson as! [String : Any])
+                            self.updateCurrentUser(jsonResult: datajson as! [String : Any])
+
                             completion(info , nil)
                         }
                         return
@@ -143,8 +144,38 @@ class APIHandler: NSObject {
         }
     }
     
-    func initCustom(strongSelf:APIHandler, jsonResult:[String:Any])  {
+    func updateCurrentUser(jsonResult:[String:Any]) {
+        if let uname = jsonResult["username"] as? String{
+            CurrentUser.sharedInstance.username = uname
+        }
+        if let fname = jsonResult["firstname"] as? String{
+            CurrentUser.sharedInstance.first_name  = fname
+        }
+        if let lname = jsonResult["lastname"] as? String{
+            CurrentUser.sharedInstance.last_name = lname
+        }
+        if let mobile = jsonResult["mobile"] as? String{
+            CurrentUser.sharedInstance.phone_number = mobile
+        }
+        if let address = jsonResult["address"] as? String{
+            CurrentUser.sharedInstance.address = address
+        }
+        if let state = jsonResult["state"] as? String{
+            CurrentUser.sharedInstance.state = state
+        }
+        if let city = jsonResult["city"] as? String{
+            CurrentUser.sharedInstance.city = city
+        }
+        if let country = jsonResult["country"] as? String{
+            CurrentUser.sharedInstance.country = country
+        }
         
+        if let profileImage = jsonResult["profile_phto"] as? String {
+            CurrentUser.sharedInstance.profileImage = profileImage
+        }
+    }
+    
+    func initCustom(strongSelf:APIHandler, jsonResult:[String:Any])  {
         if let id = jsonResult["id"] as? String{
             strongSelf.currentUser.id = id
         }

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 let kCurrentUser = "User"
+let kCurrentUserIsRemember = "KRemember"
 class CurrentUser: NSObject, NSCoding {
 	struct Static {
 		static var instance: CurrentUser?
@@ -48,6 +49,8 @@ class CurrentUser: NSObject, NSCoding {
         self.phone_number = aDecoder.decodeObject(forKey: "phonenumber") as? String
         self.password = aDecoder.decodeObject(forKey: "password") as? String
         self.devicetoken = aDecoder.decodeObject(forKey: "devicetoken") as? String
+        self.profileImage = aDecoder.decodeObject(forKey: "profile_phto") as? String
+
         
     }
     func encode(with anEncoder: NSCoder) {

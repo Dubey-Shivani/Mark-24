@@ -17,6 +17,9 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
     @IBOutlet weak var tblView: UITableView!
     var orderArray: Array<Order> = []
     var originalOrderArray: Array<Order> = []
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Order List"
@@ -89,9 +92,6 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
     }
     
     
-    @IBAction func filterBtnAction(_ sender: UIBarButtonItem) {
-        
-    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
         if !(searchBar.text?.isEmpty)! {
@@ -134,8 +134,18 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
         searchBar.resignFirstResponder()
         tblView.reloadData()
     }
-    func setPredicate(predicate: NSCompoundPredicate) {
-        print(predicate)
+    func setfilterOption(product: ProductType, orderS: OrderStatus) {
+        if product != .None {
+            orderArray = originalOrderArray.filter({($0.product?.uppercased().contains(product.rawValue))!})
+        }else{
+            
+        }
+        if orderS != .None {
+            orderArray = originalOrderArray.filter({($0.status?.uppercased().contains(orderS.rawValue))!})
+
+        }
+        
+        tblView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -144,14 +154,17 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let controller = segue.destination as? FilterViewController{
+            controller.delegate = self
+        }
     }
-    */
+ 
 
 }

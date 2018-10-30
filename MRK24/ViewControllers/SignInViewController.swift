@@ -48,10 +48,12 @@ class SignInViewController: MRKBaseViewController,UITextFieldDelegate {
     @IBAction func btnRememberAction(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         isRemember = sender.isSelected ? true : false
+        UserDefaults.standard.set(value: sender.isSelected, key: kCurrentUserIsRemember, synchronize: true)
+
     }
     @IBAction func signInBtnAction(_ sender: Any) {
-//        textFieldUserName.textField.text = "Lokesh1801@gmail.com"
-//        textFieldPassword.textField.text = "12345678"
+        textFieldUserName.textField.text = "Lokesh1801@gmail.com"
+        textFieldPassword.textField.text = "12345678"
         let user_email = textFieldUserName.textField.text
         let password = textFieldPassword.textField.text
      

@@ -8,6 +8,7 @@
 
 import UIKit
 import ECSlidingViewController
+let KupdateUserProfile = "KuserProfile"
 class SideMenuViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var userBaseView: FTBaseUserView!
@@ -22,12 +23,19 @@ class SideMenuViewController: UIViewController,UITableViewDelegate,UITableViewDa
         self.edgesForExtendedLayout = [UIRectEdge.top, UIRectEdge.bottom, UIRectEdge.left]
         menuItemsArray = FTMenuItem.menuItems
         setup()
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: NSNotification.Name(rawValue: KupdateUserProfile), object: nil)
 
         // Do any additional setup after loading the view.
     }
+    
+    @objc func onDidReceiveData(_ notification:Notification) {
+        // Do something now
+        userBaseView.setup()
+        setup()
+    }
     func setup(){
         
-        userNameLbl.text = CurrentUser.sharedInstance.first_name
+        userNameLbl.text = CurrentUser.sharedInstance.username ?? CurrentUser.sharedInstance.first_name
     }
    
     @IBAction func btnProfileAction(_ sender: Any) {

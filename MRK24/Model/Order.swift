@@ -25,3 +25,23 @@ struct Order {
     
 }
 
+
+enum ProductType : String {
+    case Desktop = "DESKTOP"
+    case Laptop = "LAPTOP"
+    case Server = "SERVER"
+    case Mobile = "MOBILE"
+    case None = "NONE"
+
+    static var Products = [Desktop, Laptop, Server,Mobile]
+}
+
+enum OrderStatus : String {
+    case InProgress = "In progress"
+    case Completed = "Completed"
+    case None = "NONE"
+
+    
+    static var status = [InProgress, Completed]
+}
+
