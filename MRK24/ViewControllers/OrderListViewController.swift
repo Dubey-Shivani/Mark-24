@@ -92,7 +92,8 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
         if !(searchBar.text?.isEmpty)! {
-            
+            //            self.actorArray.sort(by: { ($0.name!, $0.country!) < ($1.name!,$1.country!)})
+
             self.orderArray = originalOrderArray.filter({($0.orderID?.uppercased().contains(searchBar.text!))!})
             
             tblView.reloadData()

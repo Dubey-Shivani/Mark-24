@@ -87,11 +87,11 @@ class CurrentUser: NSObject, NSCoding {
         if let devicetoken = devicetoken {
             anEncoder.encode(devicetoken, forKey: "devicetoken")
         }
+        if let profileImage = profileImage {
+            anEncoder.encode(profileImage, forKey: "profile_phto")
+        }
         
     }
-    
-    
-    
     
     var id:String?
     var username:String?
@@ -106,7 +106,7 @@ class CurrentUser: NSObject, NSCoding {
     var password:String?
     var devicetoken:String?
     var createdTime:Date?
-    var profileImage:UIImage?
+    var profileImage:String?
 	
 }
 

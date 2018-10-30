@@ -26,13 +26,10 @@ class FTBaseUserView: UIView {
         self.avatarImageView.superview!.layer.cornerRadius = self.avatarImageView.superview!.frame.size.height / 2
         self.avatarImageView.superview!.layer.borderWidth = 1
         self.avatarImageView.superview!.layer.borderColor = UIColor.white.cgColor
-        self.avatarImageView.image = CurrentUser.sharedInstance.profileImage
+        if  let url = URL(string: CurrentUser.sharedInstance.profileImage ?? ""){
+            self.avatarImageView.sd_setImage(with: url, completed: nil)
+        }
+
     }
-    
-//    override func setup(withItem item: Any!) {
-//        if let user = item as? User {
-//            self.avatarImageView.setImage(user.avatarURL!, placeholder: UIImage(named: "avatar_placeholder"))
-//        }
-//    }
     
 }

@@ -50,10 +50,11 @@ class SignInViewController: MRKBaseViewController,UITextFieldDelegate {
         isRemember = sender.isSelected ? true : false
     }
     @IBAction func signInBtnAction(_ sender: Any) {
+        textFieldUserName.textField.text = "Lokesh1801@gmail.com"
+        textFieldPassword.textField.text = "12345678"
         let user_email = textFieldUserName.textField.text
         let password = textFieldPassword.textField.text
-      //textFieldUserName.textField.text = "Lokesh1801@gmail.com"
-      //textFieldPassword.textField.text = "12345678"
+     
         view.endEditing(true)
         let response = Validation.shared.validate(values: (ValidationType.email, user_email!))
         switch response {

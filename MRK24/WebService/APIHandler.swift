@@ -96,8 +96,10 @@ class APIHandler: NSObject {
                         if Int(errorCode) != 200 {
                             completion(nil , info)
                         }else{
+                            let strongSelf = self
+                            let datajson = jsonResult["data"]
+                            self.initCustom(strongSelf: strongSelf, jsonResult: datajson as! [String : Any])
                             completion(info , nil)
-                            
                         }
                         return
                     }
@@ -179,10 +181,10 @@ class APIHandler: NSObject {
         if let devicetoken = jsonResult["device_token"] as? String{
             strongSelf.currentUser.devicetoken = devicetoken
         }
-        if let profileImageData = jsonResult["profile_image_content"] as? String {
-            let imageData : Data = Data(base64Encoded: profileImageData, options: .ignoreUnknownCharacters)!
-            let image = UIImage(data: imageData)
-            strongSelf.currentUser.profileImage = image
+        if let profileImage = jsonResult["profile_phto"] as? String {
+            //let imageData : Data = Data(base64Encoded: profileImageData, options: .ignoreUnknownCharacters)!
+            //let image = UIImage(data: imageData)
+            strongSelf.currentUser.profileImage = profileImage
         }
         
     }
