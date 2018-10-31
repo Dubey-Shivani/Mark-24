@@ -8,7 +8,7 @@
 
 import UIKit
 protocol FilterDelegate: class{
-    func setPredicate(predicate: NSCompoundPredicate )
+    func setfilterOption(product:ProductType,orderS:OrderStatus)
 }
 class FilterViewController: UIViewController {
     var btnselected :Bool = false
@@ -26,19 +26,45 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var btnCompleted: UIButton!
     var dateStr :String?
     var isFromDate :Bool  = false
-    
-    var predicate1 = NSPredicate()
-    var predicate2 = NSPredicate()
-    var predicate3 = NSPredicate()
+    var productType = ProductType.None
+    var orderType = OrderStatus.None
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Filter"
 
+        if productType != .None  || orderType != .None {
+            setUp()
+        }
+        
         // Do any additional setup after loading the view.
     }
 
+    func setUp() {
+        switch productType {
+        case .Desktop:
+            btnDektop.isSelected = true
+        case .Laptop:
+            btnLaptop.isSelected = true
+        case .Server:
+            btnServer.isSelected = true
+        case .Mobile:
+            btnMobile.isSelected = true
+        default:
+            print("NONE")
+        }
+        
+        
+        switch orderType {
+        case .InProgress:
+            btnInProgress.isSelected = true
+        case .Completed:
+            btnCompleted.isSelected = true
+        default:
+            print("NONE")
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -61,7 +87,7 @@ class FilterViewController: UIViewController {
             if !fromDate.isEmpty && !toDate.isEmpty{
 
                 if let dateFrom = dateFromStr(dateStr: fromDate) as? NSDate, let dateTo = dateFromStr(dateStr: toDate) as? NSDate{
-                    predicate3  = NSPredicate(format:"date >= %@ && date <= %@ ", dateFrom as CVarArg, dateTo as CVarArg)
+                   // predicate3  = NSPredicate(format:"date >= %@ && date <= %@ ", dateFrom as CVarArg, dateTo as CVarArg)
 
                 }
             }
@@ -108,58 +134,58 @@ class FilterViewController: UIViewController {
     
     @IBAction func btnSelectProductAction(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        var strValue : String?
         if sender.tag == 101 {
-            btnDektop.isSelected = true
+            btnDektop.isSelected = sender.isSelected
             btnLaptop.isSelected = false
             btnServer.isSelected = false
             btnMobile.isSelected = false
-           strValue = "Desktop"
+            productType = sender.isSelected ? .Desktop : .None
         }else if sender.tag == 102{
             btnDektop.isSelected = false
-            btnLaptop.isSelected = true
+            btnLaptop.isSelected = sender.isSelected
             btnServer.isSelected = false
             btnMobile.isSelected = false
-            strValue = "Laptop"
+            productType = sender.isSelected ? .Laptop : .None
         }else if sender.tag == 103{
             btnDektop.isSelected = false
             btnLaptop.isSelected = false
-            btnServer.isSelected = true
+            btnServer.isSelected = sender.isSelected
             btnMobile.isSelected = false
-            strValue = "Server"
+            productType = sender.isSelected ? .Server : .None
         }else {
             btnDektop.isSelected = false
             btnLaptop.isSelected = false
             btnServer.isSelected = false
-            btnMobile.isSelected = true
-            strValue = "Mobile"
+            btnMobile.isSelected = sender.isSelected
+            productType = sender.isSelected ? .Mobile : .None
         }
         
-        predicate1 = NSPredicate(format: ("Product CONTAINS[c] %@"), strValue!)
     }
     
     
     @IBAction func btnSelectStatus(_ sender: UIButton) {
-        var strValue : String?
         sender.isSelected = !sender.isSelected
         if sender.tag == 105 {
-            btnInProgress.isSelected = true
+            btnInProgress.isSelected = sender.isSelected
             btnCompleted.isSelected = false
-            strValue = "In Process"
+            orderType = sender.isSelected ? .InProgress : .None
+            
         }else{
             btnInProgress.isSelected = false
-            btnCompleted.isSelected = true
-            strValue = "Completed"
+            btnCompleted.isSelected = sender.isSelected
+            orderType = sender.isSelected ? .Completed : .None
         }
         
-        predicate2 = NSPredicate(format: ("Status CONTAINS[c] %@"), strValue!)
+       // predicate2 = NSPredicate(format: ("Status CONTAINS[c] %@"), strValue!)
     }
     
     @IBAction func submitBtnAction(_ sender: UIButton) {
         
-        let predicateCompound = NSCompoundPredicate.init(type: .and, subpredicates: [predicate1,predicate2, predicate3])
-        delegate?.setPredicate(predicate: predicateCompound)
+        //let predicateCompound = NSCompoundPredicate.init(type: .and, subpredicates: [predicate1,predicate2, predicate3])
+       // delegate?.setPredicate(predicate: predicateCompound)
 
+        delegate?.setfilterOption(product: productType, orderS: orderType)
+        navigationController?.popViewController(animated: true)
 
     }
     

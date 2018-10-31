@@ -28,6 +28,9 @@ class MyProfileViewController: MRKBaseViewController, UITableViewDataSource,UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Edit Profile"
+        if  let url = URL(string: CurrentUser.sharedInstance.profileImage ?? ""){
+            profileImage.sd_setImage(with: url, completed: nil)
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -150,7 +153,7 @@ class MyProfileViewController: MRKBaseViewController, UITableViewDataSource,UITa
     
     func apiProfileEdit(cust:Customer) {
         SVProgressHUD.show()
-        
+
         APIHandler.sharedInstance.profileUpdateRequest(customer:cust, profileImage: profileImage.image) { (editInfo, errorInfo) in
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
@@ -158,6 +161,16 @@ class MyProfileViewController: MRKBaseViewController, UITableViewDataSource,UITa
             if errorInfo == nil {
                 TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success", description: editInfo, type: .success)
                 DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: KupdateUserProfile), object: nil, userInfo: nil)
+
+                    if let boolval = UserDefaults.standard.get(key: kCurrentUserIsRemember) as? Bool{
+                        if boolval{
+                            if let dataToSave = NSKeyedArchiver.archivedData(withRootObject: APIHandler.sharedInstance.currentUser) as? Data{
+                                UserDefaults.standard.set(value: dataToSave, key: kCurrentUser, synchronize: true)
+                            }
+                        }
+                    }
+                   
                     self.navigationController?.popViewController(animated: true)
                 }
                 

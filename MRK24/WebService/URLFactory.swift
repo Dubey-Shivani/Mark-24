@@ -38,7 +38,7 @@ class URLFactory: NSObject {
     func webServicRaiseRequest(methodName method:String, with parameter:Dictionary<String, Any>, completion: @escaping (_ stringURL: Data, _ response: URLResponse, _ error: Error?) -> Void) {
         var urlString = baseAPIUrl
         urlString.append(method)
-        print(parameter)
+      //  print(parameter)
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with: requestForRaiseRequest(url: url!, parameter: parameter)) { (data, response, error) in
             
@@ -64,7 +64,9 @@ class URLFactory: NSObject {
     func requestForRaiseRequest(url:URL,parameter:Dictionary<String, Any>) -> URLRequest {
         var request = URLRequest(url: url)
         let jsonDat = try? JSONSerialization.data(withJSONObject: parameter, options: [])
-        //let registerInfo = String(data: jsonDat!, encoding: .utf8)
+        //let jsonString = String(data: jsonDat!, encoding: .utf8)
+       // print(jsonString!)
+
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsonDat

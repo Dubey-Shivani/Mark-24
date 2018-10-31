@@ -226,7 +226,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="Lrp-fb-6Nq"/>
                                 </constraints>
-                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="yke-Y5-v6y" id="Qaf-XT-odA"/>
@@ -240,6 +240,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="uPO-Ee-K3h">
+                                    <rect key="frame" x="0.0" y="210" width="375" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="OrderListTableViewCell" rowHeight="182" id="JsM-Db-qpu" customClass="OrderListTableViewCell" customModule="MRK24" customModuleProvider="target">
@@ -421,7 +426,6 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="FilterIcon" id="yHo-pz-k0j">
                             <connections>
-                                <action selector="filterBtnAction:" destination="yke-Y5-v6y" id="7F0-wn-HNK"/>
                                 <segue destination="rfr-jQ-IaW" kind="show" id="vNF-Hk-FTj"/>
                             </connections>
                         </barButtonItem>
@@ -435,7 +439,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaQ-MF-jrS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="lTk-1G-fEZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4356" y="-771"/>
+            <point key="canvasLocation" x="3924" y="-776"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="fo8-cA-D6k">
