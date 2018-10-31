@@ -52,8 +52,8 @@ class SignInViewController: MRKBaseViewController,UITextFieldDelegate {
 
     }
     @IBAction func signInBtnAction(_ sender: Any) {
-        textFieldUserName.textField.text = "Lokesh1801@gmail.com"
-        textFieldPassword.textField.text = "12345678"
+       //textFieldUserName.textField.text = "Lokesh1801@gmail.com"
+        //textFieldPassword.textField.text = "12345678"
         let user_email = textFieldUserName.textField.text
         let password = textFieldPassword.textField.text
      
@@ -66,8 +66,8 @@ class SignInViewController: MRKBaseViewController,UITextFieldDelegate {
             break
         case .failure(_, let message):
             print(message.localized())
-           // Validation.shared.alertWithMessage(title: "Alert", message: message.localized(), vc: self)
-            performSegue(withIdentifier: "SliderStoryboardSeque", sender: nil)
+            Validation.shared.alertWithMessage(title: "Alert", message: message.localized(), vc: self)
+           // performSegue(withIdentifier: "SliderStoryboardSeque", sender: nil)
         }
     }
     

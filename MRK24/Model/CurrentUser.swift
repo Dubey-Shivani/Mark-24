@@ -28,7 +28,7 @@ class CurrentUser: NSObject, NSCoding {
 	func dispose() {
 		CurrentUser.Static.instance = nil
         UserDefaults.standard.set(value: nil, key: kCurrentUser, synchronize: true)
-
+        UserDefaults.standard.set(value: nil, key: kCurrentUserIsRemember, synchronize: true)
 		print("Disposed Singleton instance")
 	}
 	

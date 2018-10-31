@@ -17,7 +17,9 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
     @IBOutlet weak var tblView: UITableView!
     var orderArray: Array<Order> = []
     var originalOrderArray: Array<Order> = []
-
+    var originalMainOrderArray: Array<Order> = []
+    var productType = ProductType.None
+    var orderType = OrderStatus.None
     
     
     override func viewDidLoad() {
@@ -42,6 +44,7 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
             if errorInfo == nil {
                 self.orderArray = ordersArray!
                 self.originalOrderArray = self.orderArray
+                self.originalMainOrderArray = self.orderArray
                 DispatchQueue.main.async {
                     self.tblView.reloadData()
                 }
@@ -76,6 +79,7 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
             {
                 let order  = orderArray[sender.tag]
                 if order.imagesArray.isEmpty{
+                    TWMessageBarManager.sharedInstance().showMessage(withTitle: "Message", description: "No Photos", type: .error)
                     return
                 }
                 controller.imageStrArr = order.imagesArray
@@ -135,19 +139,26 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
         tblView.reloadData()
     }
     func setfilterOption(product: ProductType, orderS: OrderStatus) {
+        productType = product
+        orderType = orderS
+        setupOriginalData()
         if product != .None {
             orderArray = originalOrderArray.filter({($0.product?.uppercased().contains(product.rawValue))!})
-        }else{
-            
+            originalOrderArray = orderArray
         }
         if orderS != .None {
             orderArray = originalOrderArray.filter({($0.status?.uppercased().contains(orderS.rawValue))!})
+            originalOrderArray = orderArray
 
         }
-        
+        tblView.setContentOffset(.zero, animated: true)
         tblView.reloadData()
     }
 
+   func setupOriginalData() {
+        orderArray = originalMainOrderArray
+        originalOrderArray = orderArray
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -162,6 +173,8 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if let controller = segue.destination as? FilterViewController{
+            controller.productType = productType
+            controller.orderType = orderType
             controller.delegate = self
         }
     }

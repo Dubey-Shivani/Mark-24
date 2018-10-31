@@ -177,6 +177,9 @@
                                         <state key="normal" title="No account yet? Create One">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="71B-TM-ZkO" kind="show" id="PNA-ag-Rg8"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eef-n9-QO1">
                                         <rect key="frame" x="122.5" y="86" width="130" height="40"/>

@@ -34,9 +34,37 @@ class FilterViewController: UIViewController {
         super.viewDidLoad()
         title = "Filter"
 
+        if productType != .None  || orderType != .None {
+            setUp()
+        }
+        
         // Do any additional setup after loading the view.
     }
 
+    func setUp() {
+        switch productType {
+        case .Desktop:
+            btnDektop.isSelected = true
+        case .Laptop:
+            btnLaptop.isSelected = true
+        case .Server:
+            btnServer.isSelected = true
+        case .Mobile:
+            btnMobile.isSelected = true
+        default:
+            print("NONE")
+        }
+        
+        
+        switch orderType {
+        case .InProgress:
+            btnInProgress.isSelected = true
+        case .Completed:
+            btnCompleted.isSelected = true
+        default:
+            print("NONE")
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -107,29 +135,29 @@ class FilterViewController: UIViewController {
     @IBAction func btnSelectProductAction(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.tag == 101 {
-            btnDektop.isSelected = true
+            btnDektop.isSelected = sender.isSelected
             btnLaptop.isSelected = false
             btnServer.isSelected = false
             btnMobile.isSelected = false
-            productType = .Desktop
+            productType = sender.isSelected ? .Desktop : .None
         }else if sender.tag == 102{
             btnDektop.isSelected = false
-            btnLaptop.isSelected = true
+            btnLaptop.isSelected = sender.isSelected
             btnServer.isSelected = false
             btnMobile.isSelected = false
-            productType = .Laptop
+            productType = sender.isSelected ? .Laptop : .None
         }else if sender.tag == 103{
             btnDektop.isSelected = false
             btnLaptop.isSelected = false
-            btnServer.isSelected = true
+            btnServer.isSelected = sender.isSelected
             btnMobile.isSelected = false
-            productType = .Server
+            productType = sender.isSelected ? .Server : .None
         }else {
             btnDektop.isSelected = false
             btnLaptop.isSelected = false
             btnServer.isSelected = false
-            btnMobile.isSelected = true
-            productType = .Mobile
+            btnMobile.isSelected = sender.isSelected
+            productType = sender.isSelected ? .Mobile : .None
         }
         
     }
@@ -138,14 +166,14 @@ class FilterViewController: UIViewController {
     @IBAction func btnSelectStatus(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.tag == 105 {
-            btnInProgress.isSelected = true
+            btnInProgress.isSelected = sender.isSelected
             btnCompleted.isSelected = false
-            orderType = .InProgress
+            orderType = sender.isSelected ? .InProgress : .None
             
         }else{
             btnInProgress.isSelected = false
-            btnCompleted.isSelected = true
-            orderType = .Completed
+            btnCompleted.isSelected = sender.isSelected
+            orderType = sender.isSelected ? .Completed : .None
         }
         
        // predicate2 = NSPredicate(format: ("Status CONTAINS[c] %@"), strValue!)
