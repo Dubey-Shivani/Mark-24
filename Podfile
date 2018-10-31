@@ -11,6 +11,8 @@ target 'MRK24' do
   pod 'SVProgressHUD'
   pod 'ABSignatureView'
   pod 'UITextView+Placeholder'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
   # Pods for MRK24
 
 end
