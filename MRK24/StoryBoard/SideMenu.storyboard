@@ -1809,6 +1809,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHa-wP-tcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="ylW-5B-ILo">
+            <objects>
+                <viewController storyboardIdentifier="ChatViewControllerSegueIdentifier" id="LVf-zu-1Mk" customClass="ChatViewController" customModule="MRK24" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lYv-3w-xnK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="RVA-4g-dTn">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AwB-bA-ZHL">
+                                <rect key="frame" x="0.0" y="602" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH3-EU-H9g">
+                                        <rect key="frame" x="315" y="10" width="50" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="EnM-L9-GH3"/>
+                                            <constraint firstAttribute="height" constant="40" id="wSF-vA-7xK"/>
+                                        </constraints>
+                                        <state key="normal" title="Send"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="18s-7Z-JNY"/>
+                                    <constraint firstItem="rH3-EU-H9g" firstAttribute="centerY" secondItem="AwB-bA-ZHL" secondAttribute="centerY" id="Gcf-nv-WGd"/>
+                                    <constraint firstAttribute="trailing" secondItem="rH3-EU-H9g" secondAttribute="trailing" constant="10" id="g5x-OS-9qy"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hZe-hw-Sik">
+                                <rect key="frame" x="25" y="612" width="285" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="OYM-Er-Vjt"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="THe-vj-KGL" firstAttribute="trailing" secondItem="AwB-bA-ZHL" secondAttribute="trailing" id="32C-t2-LDr"/>
+                            <constraint firstItem="RVA-4g-dTn" firstAttribute="top" secondItem="THe-vj-KGL" secondAttribute="top" id="EFS-H5-znb"/>
+                            <constraint firstItem="RVA-4g-dTn" firstAttribute="leading" secondItem="THe-vj-KGL" secondAttribute="leading" id="I8v-3P-m9y"/>
+                            <constraint firstItem="AwB-bA-ZHL" firstAttribute="leading" secondItem="THe-vj-KGL" secondAttribute="leading" id="dmW-EM-r1Y"/>
+                            <constraint firstItem="THe-vj-KGL" firstAttribute="trailing" secondItem="RVA-4g-dTn" secondAttribute="trailing" id="jk7-UH-09r"/>
+                            <constraint firstItem="THe-vj-KGL" firstAttribute="bottom" secondItem="AwB-bA-ZHL" secondAttribute="bottom" constant="5" id="n3C-f1-8sP"/>
+                            <constraint firstItem="hZe-hw-Sik" firstAttribute="centerY" secondItem="AwB-bA-ZHL" secondAttribute="centerY" id="pZZ-sd-S76"/>
+                            <constraint firstItem="THe-vj-KGL" firstAttribute="bottom" secondItem="RVA-4g-dTn" secondAttribute="bottom" id="pZh-x2-qdR"/>
+                            <constraint firstItem="rH3-EU-H9g" firstAttribute="leading" secondItem="hZe-hw-Sik" secondAttribute="trailing" constant="5" id="sBq-65-rX9"/>
+                            <constraint firstItem="hZe-hw-Sik" firstAttribute="leading" secondItem="lYv-3w-xnK" secondAttribute="leading" constant="25" id="tEa-Ps-kN8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="THe-vj-KGL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XjC-rs-puT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="49" y="681"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZNX-dF-rrW">
             <objects>
@@ -1829,14 +1889,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Checkbox" width="16.5" height="16.5"/>
-        <image name="FilterIcon" width="60" height="60"/>
-        <image name="Menubtn" width="30" height="22.5"/>
-        <image name="UncheckBox" width="20.803611755371094" height="20.803611755371094"/>
-        <image name="avatar_placeholder" width="52.5" height="53"/>
-        <image name="background1" width="720" height="1080"/>
-        <image name="cameraIcon" width="67.5" height="59"/>
-        <image name="down" width="23.5" height="23.5"/>
-        <image name="up" width="23.5" height="23.5"/>
+        <image name="Checkbox" width="16" height="16"/>
+        <image name="FilterIcon" width="30" height="30"/>
+        <image name="Menubtn" width="30" height="22"/>
+        <image name="UncheckBox" width="64" height="64"/>
+        <image name="avatar_placeholder" width="52" height="53"/>
+        <image name="background1" width="360" height="540"/>
+        <image name="cameraIcon" width="67" height="59"/>
+        <image name="down" width="23" height="23"/>
+        <image name="up" width="23" height="23"/>
     </resources>
 </document>
