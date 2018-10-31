@@ -23,14 +23,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func setupLoginCredential() {
-        if let userData = UserDefaults.standard.value(forKey: kCurrentUser) as? Data{
-            if let user = NSKeyedUnarchiver.unarchiveObject(with: userData) as? CurrentUser{
-                APIHandler.sharedInstance.currentUser = user
-                temp()
-                findEnterPoint()
-                
+        
+       
+        if let flag = UserDefaults.standard.value(forKey: kCurrentUserIsRemember) as? Bool{
+            guard flag else {
+                return
+            }
+            if let userData = UserDefaults.standard.value(forKey: kCurrentUser) as? Data{
+                if let user = NSKeyedUnarchiver.unarchiveObject(with: userData) as? CurrentUser{
+                    APIHandler.sharedInstance.currentUser = user
+                    temp()
+                    findEnterPoint()
+                    
+                }
             }
         }
+       
     }
     func temp() {
         CurrentUser.sharedInstance.id =  APIHandler.sharedInstance.currentUser.id

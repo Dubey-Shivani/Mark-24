@@ -142,7 +142,7 @@ class MyProfileViewController: MRKBaseViewController, UITableViewDataSource,UITa
     
     
     @IBAction func submitBtnAction(_ sender: Any) {
-        
+        view.endEditing(true)
         if cust.email_id.isEmpty || cust.first_name.isEmpty || profileImage.image == nil {
             return
         }
