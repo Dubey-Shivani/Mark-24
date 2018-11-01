@@ -69,6 +69,7 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
         cell.lblProduct.text = order.product
         cell.lblProblem.text = order.issue
         cell.lblSubmitdate.text = order.createdAt
+        cell.lblStatusProgress.text = order.status
         cell.viewBtn.tag = indexPath.row
         cell.viewBtn.addTarget(self, action: #selector(btnViewPhoto), for: .touchUpInside)
         return cell
@@ -147,7 +148,7 @@ class OrderListViewController: MRKBaseViewController, UITableViewDelegate, UITab
             originalOrderArray = orderArray
         }
         if orderS != .None {
-            orderArray = originalOrderArray.filter({($0.status?.uppercased().contains(orderS.rawValue))!})
+            orderArray = originalOrderArray.filter({($0.status?.contains(orderS.rawValue))!})
             originalOrderArray = orderArray
 
         }

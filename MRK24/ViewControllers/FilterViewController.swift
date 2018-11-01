@@ -83,15 +83,15 @@ class FilterViewController: UIViewController {
             toDateLblText.text = dateStr
         }
         
-        if let fromDate = frmDateLblText.text, let toDate = toDateLblText.text  {
-            if !fromDate.isEmpty && !toDate.isEmpty{
-
-                if let dateFrom = dateFromStr(dateStr: fromDate) as? NSDate, let dateTo = dateFromStr(dateStr: toDate) as? NSDate{
-                   // predicate3  = NSPredicate(format:"date >= %@ && date <= %@ ", dateFrom as CVarArg, dateTo as CVarArg)
-
-                }
-            }
-        }
+//        if let fromDate = frmDateLblText.text, let toDate = toDateLblText.text  {
+//            if !fromDate.isEmpty && !toDate.isEmpty{
+//
+//                if let dateFrom = dateFromStr(dateStr: fromDate) as? NSDate, let dateTo = dateFromStr(dateStr: toDate) as? NSDate{
+//                   // predicate3  = NSPredicate(format:"date >= %@ && date <= %@ ", dateFrom as CVarArg, dateTo as CVarArg)
+//
+//                }
+//            }
+//        }
     }
     
     func dateFromStr(dateStr:String) -> Date {
@@ -183,7 +183,13 @@ class FilterViewController: UIViewController {
         
         //let predicateCompound = NSCompoundPredicate.init(type: .and, subpredicates: [predicate1,predicate2, predicate3])
        // delegate?.setPredicate(predicate: predicateCompound)
-
+        if let fromDate = frmDateLblText.text, let toDate = toDateLblText.text {
+            if fromDate == "From Date" || toDate == "To Date"{
+                print(fromDate)
+                print(toDate)
+            }
+        }
+        
         delegate?.setfilterOption(product: productType, orderS: orderType)
         navigationController?.popViewController(animated: true)
 

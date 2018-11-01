@@ -37,8 +37,8 @@ enum ProductType : String {
 }
 
 enum OrderStatus : String {
-    case InProgress = "In progress"
-    case Completed = "Completed"
+    case InProgress = "Processing"
+    case Completed = "Complete"
     case None = "NONE"
 
     

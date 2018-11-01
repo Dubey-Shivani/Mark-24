@@ -29,7 +29,13 @@ class MyProfileViewController: MRKBaseViewController, UITableViewDataSource,UITa
         super.viewDidLoad()
         title = "Edit Profile"
         if  let url = URL(string: CurrentUser.sharedInstance.profileImage ?? ""){
-            profileImage.sd_setImage(with: url, completed: nil)
+            //self.profileImage.sd_setImage(with: url, completed: nil)
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                DispatchQueue.main.async {
+                    self.profileImage.image = UIImage(data: data!)
+                }
+            }
         }
         // Do any additional setup after loading the view.
     }
